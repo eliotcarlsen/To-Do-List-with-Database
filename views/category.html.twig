@@ -9,7 +9,7 @@
         <p>Here are the tasks for this category:</p>
         <ul>
             {% for task in tasks %}
-                <li>{{ task.getDescription }}</li>
+                <li><input type="checkbox">{{ task.getDescription }}</li>
             {% endfor %}
         </ul>
     {% endif %}
