@@ -39,8 +39,8 @@
 
         static function getAll()
         {
-            $returned_categories = $GLOBALS['DB']->query("SELECT * FROM categories;");
             $categories = array();
+            $returned_categories = $GLOBALS['DB']->query("SELECT * FROM categories;");
             foreach($returned_categories as $category) {
                 $name = $category['name'];
                 $id = $category['id'];
@@ -51,9 +51,14 @@
         }
 
         static function deleteAll()
-        {
-          $GLOBALS['DB']->exec("DELETE FROM categories;");
+    {
+        $executed = $GLOBALS['DB']->exec("DELETE FROM categories;");
+        if ($executed) {
+            return true;
+        } else {
+            return false;
         }
+    }
 
         static function find($search_id)
         {

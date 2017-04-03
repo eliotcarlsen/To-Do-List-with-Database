@@ -3,7 +3,7 @@
     <title>To Do List</title>
 </head>
 <body>
-    <h1>To Do List</h1>
+    <h1>To Do List for {{ category.getName }}</h1>
     {% if tasks is not empty %}
     <p>Here are all your tasks:</p>
 <ul>
@@ -13,6 +13,7 @@
 </ul>
 {% endif %}
 <form action='/tasks' method='post'>
+        <input id="category_id" name="category_id" type="hidden" value="{{ category.getId() }}">
         <label for='description'>Task Description</label>
         <input id='description' name='description' type='text'>
 
@@ -21,5 +22,6 @@
     <form action='/delete_tasks' method='post'>
         <button type='submit'>Clear</button>
     </form>
+    <p><a href='/'>Home</a></p>
 </body>
 </html>

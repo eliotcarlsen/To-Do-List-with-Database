@@ -1,4 +1,4 @@
-<?php
+3<?php
   class Task
   {
       private $description;
@@ -32,15 +32,15 @@
       }
 
       function save()
-      {
-          $executed = $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id) VALUES ('{$this->getDescription()}', {$this->getCategoryId()})");
-              if ($executed) {
-                  $this->id = $GLOBALS['DB']->lastInsertId();
-                  return true;
-              } else {
-                  return false;
-              }
-      }
+        {
+            $executed = $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id) VALUES ('{$this->getDescription()}', {$this->getCategoryId()})");
+            if ($executed) {
+                $this->id = $GLOBALS['DB']->lastInsertId();
+                return true;
+            } else {
+                return false;
+            }
+        }
 
       static function getAll()
       {
@@ -58,7 +58,12 @@
 
       static function deleteAll()
       {
-          $GLOBALS['DB']->exec("DELETE FROM tasks;");
+         $executed = $GLOBALS['DB']->exec("DELETE FROM tasks;");
+         if ($executed) {
+             return true;
+         } else {
+             return false;
+         }
       }
 
 

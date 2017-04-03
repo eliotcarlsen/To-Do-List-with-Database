@@ -20,6 +20,25 @@
           Category::deleteAll();
       }
 
+      function test_getDescription()
+      {
+          $description = "Dishes.";
+          $test_task = new Task($description);
+
+          $result = $test_task->getDescription();
+          $this->assertEquals($description, $result);
+      }
+
+      function test_setDescription()
+      {
+          $description = "dishes";
+          $test_task = new Task($description);
+
+          $test_task->setDescription("drink coffee");
+          $result = $test_task->getDescription();
+          $this->assertEquals("drink coffee", $result);
+      }
+
       function test_getId()
       {
           $name = "Home stuff";
